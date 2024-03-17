@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 4.2.3</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        function* primeNumbers() {
+            let number = 7;
+
+            while (true) {
+                if (isPrime(number)) {
+                    yield number;
+                }
+                number++;
+            }
+        }
+
+        function isPrime(num) {
+            for (let i = 7, sqrt = Math.sqrt(num); i <= sqrt; i++) {
+                if (num % i === 0) {
+                    return false;
+                }
+            }
+            return num > 1;
+        }
+
+        const primeGenerator = primeNumbers();
+        const outputElement = document.getElementById("output");
+
+        for (let i = 0; i < 10; i++) {
+            const number = primeGenerator.next().value;
+            const numberElement = document.createElement("p");
+            const numberText = document.createTextNode(number);
+            numberElement.appendChild(numberText);
+            outputElement.appendChild(numberElement);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="vieport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <title>Заметки</title>
+	
+    <style>
+        button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: red;
+            cursor: pointer;
+        }
+
+        .note {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .note p {
+            margin-right: 10px;
+        }
+
+        .note sub {
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        function addNote() {
+			var list = document.getElementById("noteList");
+			var noteInput = document.getElementById("noteInput").value;
+			var date = new Date().toLocaleDateString();
+
+			var newNote = document.createElement("div");
+			newNote.classList.add("note");
+			var paragraph = document.createElement("p");
+			var button = document.createElement("button");
+			var sub = document.createElement("sub");
+
+			paragraph.innerText = noteInput;
+			button.innerHTML = "<span>&#10006;</span>";
+			sub.innerText = date;
+
+			button.onclick = function() {
+				list.removeChild(newNote);
+				list.removeChild(sub); // Удаляем дату при удалении заметки
+			};
+
+			newNote.appendChild(paragraph);
+			newNote.appendChild(button);
+			list.appendChild(newNote);
+			list.appendChild(sub);
+
+			document.getElementById("noteInput").value = "";
+		}
+
+        function addDefaultNotes() {
+            for (var i = 1; i <= 3; i++) {
+                var list = document.getElementById("noteList");
+                var newNote = document.createElement("div");
+                newNote.classList.add("note");
+                var paragraph = document.createElement("p");
+                var button = document.createElement("button");
+                var sub = document.createElement("sub");
+
+                paragraph.innerText = i;
+                button.innerHTML = "<span>&#10006;</span>";
+                sub.innerText = new Date().toLocaleDateString();
+
+                button.onclick = function() {
+                    list.removeChild(newNote);
+                    list.removeChild(sub);
+                };
+
+                newNote.appendChild(paragraph);
+                newNote.appendChild(button);
+                list.appendChild(newNote);
+                list.appendChild(sub);
+            }
+        }
+
+        window.onload = addDefaultNotes;
+    </script>
+</head>
+
+<body>
+    <h1>Список делишек</h1>
+    <input type="text" id="noteInput" placeholder="Новый элемент списка">
+    <button onclick="addNote()">Создать</button>
+    <div id="noteList">
+    </div>
+    <footer>
+        <hr>
+        <p>Copyright &copy;</p>
+    </footer>
+</body>
+
+</html>

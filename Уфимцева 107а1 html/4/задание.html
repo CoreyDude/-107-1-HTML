@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 4.2.1</title>
+</head>
+<body>
+    <script>
+        function* random(n, m) {
+            while (true) {
+                yield Math.floor(Math.random() * (m - n + 1) + n);
+            }
+        }
+
+        const numberGenerator = random(1, 42);
+
+        for (let i = 0; i < 5; i++) {
+            document.write(numberGenerator.next().value + '<br>');
+        }
+    </script>
+</body>
+</html>
