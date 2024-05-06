@@ -1,0 +1,88 @@
+<style>
+    body {
+        font-family: 'Comic', sans-serif;
+        background-color: #8bb7cc !important; /* цвет фона страницы */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    h1 {
+        color: #333; /* цвет текста заголовка */
+    }
+
+    input[type="text"] {
+        margin-top: 10px; /* отступ сверху для поля ввода */
+		padding: 5px 10px; /* добавляем отступы, чтобы внешний вид был схож со стилем кнопки */
+        width: auto; /* устанавливаем ширину поля ввода автоматически по содержимому */
+    }
+
+    button {
+        background-color: #c97057; /* цвет фона кнопки */
+        color: white; /* цвет текста кнопки */
+        font-size: 20px;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+		box-sizing: border-box; /* учитываем padding и border при определении ширины элемента */
+        padding: 5px 10px;
+    }
+
+    button:hover {
+        background-color: #a85b45; /* цвет фона кнопки при наведении */
+    }
+
+    #noteList {
+		margin-top: 20px;
+        max-height: auto; /* ограничиваем высоту списка и добавляем прокрутку при необходимости */
+        overflow-y: auto;
+    }
+
+    .note {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        padding: 5px;
+        background-color: #bae6d6; /* цвет фона элемента списка */
+    }
+
+    .note:hover {
+        background-color: #a1e3d4; /* цвет фона элемента списка при наведении */
+    }
+
+    .note p {
+        margin-right: 10px;
+        flex: 1; /* устанавливаем, чтобы текст был растянут на всю доступную ширину */
+    }
+
+    .note button {
+        color: red; /* цвет текста кнопки удаления */
+    }
+
+    .note sub {
+        margin-top: 5px;
+        font-size: 12px;
+        color: #777; /* цвет текста подзаголовка */
+    }
+
+    footer {
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        input[type="text"] {
+            display: block;
+            margin-top: 10px;
+        }
+
+        button {
+            display: block;
+            margin-top: 10px;
+        }
+    }
+</style>
