@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from 'react';
+
+const ProstoInSec = () => {
+  const [primes, setPrimes] = useState([2]);
+
+  useEffect(() => {
+    // ”станавливаем интервал в одну секунду дл€ поиска простых чисел
+    const interval = setInterval(() => {
+      // Ќаходим следующее простое число, начина€ с последнего найденного простого числа
+      let nextPrime = primes[primes.length-1] + 1;
+      while (!isPrime(nextPrime)) {
+        nextPrime++;
+      }
+
+      // ƒобавл€ем новое простое число в список
+      setPrimes([...primes, nextPrime]);
+    }, 1000);
+
+    // ќчищаем интервал при размонтировании компонента
+    return () => clearInterval(interval);
+  }, [primes]);
+
+  // ‘ункци€ дл€ проверки простого числа
+  const isPrime = (n) => {
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+      if (n % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  return (
+    <div>
+      ѕростые числа: { primes.join(', ') }
+    </div>
+  );
+};
+
+export default ProstoInSec;
